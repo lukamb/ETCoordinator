@@ -69,7 +69,6 @@ open class BaseCoordinator<RouterType: Router>: StoppableCoordinator, Identifiab
     open func stop(animated: Bool, completion: (() -> Void)?) {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard isStopped == false else {
-            assertionFailure("Unable to stop alredy stopped coordinator (\(self.identification))")
             Logger.info("Unable to stop alredy stopped coordinator (\(self.identification))")
             return
         }
@@ -118,7 +117,6 @@ open class BaseCoordinator<RouterType: Router>: StoppableCoordinator, Identifiab
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
 
         guard contains(array: children, element: coord) == false else {
-            assertionFailure("Unable to addChild that is alredy added. New child: (\(coord.identification))")
             Logger.info("Unable to addChild that is alredy added. New child: (\(coord.identification))")
             return
         }
@@ -145,7 +143,6 @@ open class BaseCoordinator<RouterType: Router>: StoppableCoordinator, Identifiab
         Logger.log("Finished \(self.identification)")
 
         guard isFinished == false else {
-            assertionFailure("Unable to finish alredy finished coordinator (\(self.identification))")
             Logger.info("Unable to finish alredy finished coordinator (\(self.identification))")
             return
         }
@@ -242,5 +239,4 @@ private func remove(element coord: IdentifiableCoordinator, from: inout [Stoppab
     if let idx = from.firstIndex(where: { $0.identity == coord.identity }) {
         from.remove(at: idx)
     }
-    assert(contains(array: from, element: coord) == false, "Contains coordinator after removal.")
 }

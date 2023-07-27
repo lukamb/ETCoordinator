@@ -17,7 +17,6 @@ open class Router: NSObject, Initializable {
     public required override init() {}
 
     open func vcForCoordinatorPresent() -> UIViewController {
-        assert(starter.firstController != nil, "Router wasn't started yet. Start router and then you can call this.")
         return starter.firstController
     }
 

@@ -37,7 +37,6 @@ open class Starter: NSObject {
     }
 
     open func start(vc: UIViewController, presentFrom fromController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        assert(isStarted == false, "Already started")
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
 
         firstController = vc
@@ -46,7 +45,6 @@ open class Starter: NSObject {
     }
 
     open func start(nc: UINavigationController, presentFrom fromController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        assert(isStarted == false, "Already started")
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
 
         firstController = nc
@@ -56,7 +54,6 @@ open class Starter: NSObject {
     }
 
     open func start(vc: UIViewController, pushTo fromController: UINavigationController, animated: Bool, completion: (() -> Void)?) {
-        assert(isStarted == false, "Already started")
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
 
         firstController = vc
